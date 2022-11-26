@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<violations>
+    <violation>
+        <date_time>2020-07-08 16:48:40</date_time>
+        <first_name>Harry</first_name>
+        <last_name>Herman</last_name>
+        <type>PARKING IN A PROHIBITED AREA</type>
+        <final_amount>1300</final_amount>
+    </violation>
+    <violation>
+        <date_time>2021-06-30 14:29:51</date_time>
+        <first_name>Sonya</first_name>
+        <last_name>Parker</last_name>
+        <type>PARKING IN A PROHIBITED AREA</type>
+        <final_amount>1020</final_amount>
+    </violation>
+    <violation>
+        <date_time>2022-01-27 07:30:33</date_time>
+        <first_name>Alex</first_name>
+        <last_name>Fisher</last_name>
+        <type>PARKING IN A PROHIBITED AREA</type>
+        <final_amount>1700</final_amount>
+    </violation>
+</violations>

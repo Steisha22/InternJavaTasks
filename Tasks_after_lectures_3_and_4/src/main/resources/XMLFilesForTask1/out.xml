@@ -1,0 +1,19 @@
+<persons>
+    <person name="Іван Котляревський" birthDate="09.09.1769" />
+    <person name="Тарас Шевченко" birthDate="09.03.1814" />
+    <person
+            birthData="27.08.1856"
+            name = "Іван Франко"
+            />
+    <person name="Леся Українка"
+            
+            birthData="13.02.1871" />
+    <person birthDate="17.06.1849" name="Олена Пчілка" />
+    <person
+            
+            birthData="06.01.1938"
+            name = "Василь Стус" />
+    <person name="Олесь"
+            birthData="04.12.1878"
+            />
+</persons>

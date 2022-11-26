@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<violations>
+    <violation>
+        <date_time>2022-04-24 21:40:34</date_time>
+        <first_name>Tom</first_name>
+        <last_name>Ford</last_name>
+        <type>DRUNK DRIVING</type>
+        <final_amount>2500</final_amount>
+    </violation>
+    <violation>
+        <date_time>2021-09-18 04:00:00</date_time>
+        <first_name>Pasha</first_name>
+        <last_name>Pupkin</last_name>
+        <type>DRUNK DRIVING</type>
+        <final_amount>1200</final_amount>
+    </violation>
+    <violation>
+        <date_time>2021-08-05 03:24:00</date_time>
+        <first_name>Sakura</first_name>
+        <last_name>Hakuri</last_name>
+        <type>DRUNK DRIVING</type>
+        <final_amount>1345</final_amount>
+    </violation>
+</violations>

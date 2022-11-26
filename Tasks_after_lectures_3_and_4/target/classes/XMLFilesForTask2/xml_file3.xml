@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<violations>
+    <violation>
+        <date_time>2022-05-23 17:10:08</date_time>
+        <first_name>Elena</first_name>
+        <last_name>Frolova</last_name>
+        <type>SEAT BELT NOT FASTENED</type>
+        <final_amount>510</final_amount>
+    </violation>
+    <violation>
+        <date_time>2022-11-22 12:09:57</date_time>
+        <first_name>Petro</first_name>
+        <last_name>Gavryk</last_name>
+        <type>SEAT BELT NOT FASTENED</type>
+        <final_amount>510</final_amount>
+    </violation>
+    <violation>
+        <date_time>2022-02-21 18:34:47</date_time>
+        <first_name>Alina</first_name>
+        <last_name>Pash</last_name>
+        <type>SEAT BELT NOT FASTENED</type>
+        <final_amount>460</final_amount>
+    </violation>
+</violations>
