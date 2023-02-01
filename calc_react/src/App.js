@@ -62,7 +62,6 @@ const buttonStyle = {
 let firstValue = '';
 let secondValue = '';
 let operator = '';
-let isFinish = false;
 
 const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 const operators = ['+', '-', '*', '÷'];
@@ -79,6 +78,7 @@ class App extends React.Component {
     this.inputValue = this.inputValue.bind(this)
     this.clearAll = this.clearAll.bind(this)
     this.calculate = this.calculate.bind(this)
+    this.parse = this.parse.bind(this)
   }
 
   render(){
@@ -126,7 +126,7 @@ class App extends React.Component {
               </div>
               <div className="row">
                   <Provider store={store}>
-                    <Calculator/>
+                    <Calculator onClick={this.parse}/>
                   </Provider>
               </div>
             </div>
@@ -140,25 +140,9 @@ class App extends React.Component {
     if(numbers.includes(curVal)){
       if(secondValue === '' && operator === ''){
         firstValue += curVal
-        console.log(firstValue, operator, secondValue)
-      }
-      else if (firstValue !== '' && secondValue !== '' && isFinish){
-        if(operator==='') {
-          secondValue = ''
-          isFinish = false
-          firstValue += curVal          
-          this.setState({ text: firstValue + operator + secondValue})
-          return
-        }
-        else{
-          secondValue = curVal
-          isFinish = false
-          console.log(firstValue, operator, secondValue)
-        }
       }
       else {
         secondValue += curVal
-        console.log(firstValue, operator, secondValue)
       }
     }
 
@@ -171,7 +155,6 @@ class App extends React.Component {
       operator = curVal
 
       this.setState({ text: firstValue + operator + ''})
-      console.log(firstValue, operator, secondValue)
       return
     }
 
@@ -179,7 +162,6 @@ class App extends React.Component {
       this.setState({ text: curVal})
     }
     else {
-      //this.setState({ text: this.state.text + curVal})
       this.setState({ text: firstValue + operator + secondValue})
     }
   }
@@ -199,7 +181,6 @@ class App extends React.Component {
         break
       case '÷':
         if(secondValue === '0'){
-          this.setState({ text: "Do not divide on 0"})
           this.clearAll()
           return
         }
@@ -211,27 +192,47 @@ class App extends React.Component {
     }
 
     let wholeExpression = a + operator + secondValue + '=' + firstValue + '\n'
-    console.log(wholeExpression)
     hstr.push(wholeExpression)
 
-    isFinish = true
     this.setState({ text: firstValue, history: hstr.join('')})
     operator = ''
-
-    console.log(firstValue, operator, secondValue)
+    secondValue = ''
   }
 
   clearAll(){
     firstValue = ''
     secondValue = ''
     operator = ''
-    isFinish = false
     this.setState({ text: '0'})
   }
 
-  parse(json){
+  parse(){
+    const state = store.getState()
+    let json = state.list  
 
+    for (let i = 0; i < json.length; i++) {
+      let partsOfExpr = json[i].split(/\s+/)
+      firstValue = partsOfExpr[0]
+      operator = partsOfExpr[1]
+      secondValue = partsOfExpr[2]
+      this.calculate()
+    }
 
+    //this part is used when getting data from the simulated backend
+    // console.log(json[0][0])
+    // console.log(json[0][1])
+    // console.log(json[0][2])
+    // console.log(json[0][3])    
+
+    // for (let i = 0; i < json[0].length; i++) {
+    //   let partsOfExpr = json[0][i].split(/\s+/)
+    //   console.log(partsOfExpr)
+    //   firstValue = partsOfExpr[0]
+    //   operator = partsOfExpr[1]
+    //   secondValue = partsOfExpr[2]
+    //   console.log(firstValue, operator, secondValue)
+    //   this.calculate()
+    // }
   }
 
 }

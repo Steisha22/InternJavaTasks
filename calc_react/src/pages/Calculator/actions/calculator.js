@@ -1,4 +1,3 @@
-import App from 'C:/Study/calc_react/src/App';
 const receiveExpressions = expressions => ({
     expressions, 
     type: 'RECEIVE_EXPRESSIONS' 
@@ -12,28 +11,38 @@ const errorReceiveExpressions = () => ({
     type: 'ERROR_RECEIVE_EXPRESSIONS' 
 });
 
+//Simulating backend
 // const getExpressions = (expressionsCount) => new Promise((onSuccess) => {
 //     setTimeout(
-//         () => onSuccess(Array
-//         .from(new Array(expressionsCount).keys())
-//         .map(index => ({ name: ['2 + 2', '3 - 2', '25 / 5', '4 * 4']}))),
+//         () => onSuccess(Array(['2 + 2', '3 - 1', '25 ÷ 5', '4 * 4'])),
 //         2000
 //     );
 // });
 
 const getExpressions = (expressionsCount) => {
-    return fetch(`localhost/8080?${expressionsCount}`)
-    .then(response => response.json())
-    .then((json) => {
-      App.parse(json)
-    })
+    const url = `http://localhost:8080/?count=${expressionsCount}`;
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+    };
+    return fetch(url, options);
 };
 
 const fetchExpresions = ({ expressionsCount }) => (dispatch) => {
     dispatch(requestExpressions()); // Повідомляю стору, що роблю запит 
-    return getExpressions(expressionsCount) // Викликаю функцію запиту студентів
-    .then(expressions => dispatch(receiveExpressions(expressions))) // Успіх
-    .catch(() => dispatch(errorReceiveExpressions())); // Помилка
+    return getExpressions(expressionsCount)
+    .then(response => {
+        if (response.ok){
+            response.json()
+            .then(expressions => dispatch(receiveExpressions(expressions)))
+            .catch(() => dispatch(errorReceiveExpressions()));
+        }
+        else {
+            console.log('Error status ' + response.status)
+        }
+    })
 };
 
 export default {

@@ -30,19 +30,54 @@ const StyledButton = withStyles({
 
 class Calculator extends React.Component{
     render () {
-        console.log(this.props);
         return (
             <div>
                 <StyledButton 
-                    onClick={() => this.props.actionFetchExpressions({
+                    onClick={() => {
+                    this.props.actionFetchExpressions({
                         expressionsCount: 5,
-                    })}>
+                    });
+                    setTimeout(() => {
+                        this.props.onClick()
+                      }, 500);
+                    
+                }}>
                 Get and solve expressions
                 </StyledButton>
             </div>
         )
     }
 }
+
+// class Calculator extends React.Component{
+//     totalClick = async () => {
+//         await this.props.actionFetchExpressions({
+//             expressionsCount: 5,
+//         });
+
+//         this.props.onClick();
+//     }
+//     // totalClick = () => {
+//     //      this.props.actionFetchExpressions({
+//     //         expressionsCount: 5,
+//     //     });
+
+//     //     this.props.onClick();
+//     // }
+
+//     render () {
+//         return (
+//             <div>
+//                 <StyledButton 
+//                     onClick={this.totalClick}>
+//                 Get and solve expressions
+//                 </StyledButton>
+//             </div>
+//         )
+//     }
+// }
+
+
 
 const mapReduxStateToProps = reduxState => ({
     ...reduxState,    
