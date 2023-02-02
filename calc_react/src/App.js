@@ -218,7 +218,8 @@ class App extends React.Component {
       this.calculate()
     }
 
-    //this part is used when getting data from the simulated backend
+    //This part is used when getting data from the simulated backend
+    //Please uncomment this part and comment out the same above if you run the application with a simulated backend
     // console.log(json[0][0])
     // console.log(json[0][1])
     // console.log(json[0][2])

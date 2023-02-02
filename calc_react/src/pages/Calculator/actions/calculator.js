@@ -12,6 +12,7 @@ const errorReceiveExpressions = () => ({
 });
 
 //Simulating backend
+//Please uncomment this part and comment out the same below if you run the application with a simulated backend
 // const getExpressions = (expressionsCount) => new Promise((onSuccess) => {
 //     setTimeout(
 //         () => onSuccess(Array(['2 + 2', '3 - 1', '25 ÷ 5', '4 * 4'])),

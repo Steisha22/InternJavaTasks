@@ -49,6 +49,7 @@ class Calculator extends React.Component{
     }
 }
 
+//Please uncomment this part and comment out the same above if you run the application with a simulated backend
 // class Calculator extends React.Component{
 //     totalClick = async () => {
 //         await this.props.actionFetchExpressions({
@@ -57,14 +58,6 @@ class Calculator extends React.Component{
 
 //         this.props.onClick();
 //     }
-//     // totalClick = () => {
-//     //      this.props.actionFetchExpressions({
-//     //         expressionsCount: 5,
-//     //     });
-
-//     //     this.props.onClick();
-//     // }
-
 //     render () {
 //         return (
 //             <div>
