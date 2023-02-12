@@ -6,7 +6,7 @@ import List from 'components/List';
 import ListItemText from 'components/ListItemText';
 import Button from 'components/Button';
 import Divider from 'components/Divider';
-import useAccessValidate from 'hooks/useAccessValidate';
+//import useAccessValidate from 'hooks/useAccessValidate';
 
 import {
     fetchDishes,
@@ -42,14 +42,14 @@ const Dishes = ({
     //     availableItems,
     // } = useSelector(({ reducer })=> reducer);
     const dishes = useSelector(({ dishes }) => dishes);
-    const canSeeList = useAccessValidate({
-        ownedAuthorities: authorities,
-        neededAuthorities: ['МОЖНО_ВОТ_ЭТУ_ШТУКУ'],
-    });
+    // const canSeeList = useAccessValidate({
+    //     ownedAuthorities: authorities,
+    //     neededAuthorities: ['МОЖНО_ВОТ_ЭТУ_ШТУКУ'],
+    // });
 
     return (
         <div className={classes.container}>
-            {canSeeList && dishes.map((item, index) => (
+            {dishes.list.map((item) => (
                 <List sx={style}>
                     <div style={{
                             display: 'flex',
@@ -84,11 +84,11 @@ const Dishes = ({
                 //     </Typography>
                 // </Link>
             ))}
-            {!canSeeList && (
-                <Typography>
-                    Не могу ничего показать :(
-                </Typography>
-            )}
+            {/*{!canSeeList && (*/}
+            {/*    <Typography>*/}
+            {/*        Не могу ничего показать :(*/}
+            {/*    </Typography>*/}
+            {/*)}*/}
         </div>
     )
 };
