@@ -29,27 +29,36 @@ const style2 = {
     paddingLeft: 2,
 };
 
-const Dishes = ({
-                     authorities,
-                 }) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        console.log("ComponentDidMount");
-        dispatch(fetchDishes())
-    }, []);
-    const classes = getClasses();
-    // const {
-    //     availableItems,
-    // } = useSelector(({ reducer })=> reducer);
+function Dishes(){
     const dishes = useSelector(({ dishes }) => dishes);
-    // const canSeeList = useAccessValidate({
-    //     ownedAuthorities: authorities,
-    //     neededAuthorities: ['МОЖНО_ВОТ_ЭТУ_ШТУКУ'],
-    // });
+    const dispatch = useDispatch();
+    const classes = getClasses();
+    useEffect(() => {
+         console.log("ComponentDidMount");
+         dispatch(fetchDishes())
+    }, []);
+
+// const Dishes = ({
+//                      authorities,
+//                  }) => {
+//     const dispatch = useDispatch();
+//     useEffect(() => {
+//         console.log("ComponentDidMount");
+//         dispatch(fetchDishes())
+//     }, []);
+//     const classes = getClasses();
+//     // const {
+//     //     availableItems,
+//     // } = useSelector(({ reducer })=> reducer);
+//     const dishes = useSelector(({ dishes }) => dishes);
+//     // const canSeeList = useAccessValidate({
+//     //     ownedAuthorities: authorities,
+//     //     neededAuthorities: ['МОЖНО_ВОТ_ЭТУ_ШТУКУ'],
+//     // });
 
     return (
         <div className={classes.container}>
-            {dishes.list.map((item) => (
+            {dishes.dishes.map((item) => (
                 <List sx={style}>
                     <div style={{
                             display: 'flex',
