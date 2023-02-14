@@ -11,6 +11,7 @@ import Header from 'components/Header';
 import PageInitial from 'pageProviders/Initial';
 import PageLogin from 'pageProviders/Login';
 import PageDishes from 'pageProviders/Dishes';
+import PageEditDish from 'pageProviders/EditDish';
 import * as PAGES from 'constants/pages';
 import {
   fetchUser,
@@ -42,9 +43,21 @@ const App = () => {
               <Route path={`/${PAGES.INITIAL}`}>
                 <PageInitial />
               </Route>
+              <Route path={'/cafe/dishes/edit/:id'}>
+                <PageEditDish />
+              </Route>
+              <Route path={'/cafe/dishes/edit'}>
+                <PageEditDish />
+              </Route>
               <Route path={'/cafe/dishes'}>
                 <PageDishes />
               </Route>
+              {/*<Route path={'/edit/:id'}>*/}
+              {/*  <PageEditDish />*/}
+              {/*</Route>*/}
+              {/*<Route path={'/edit'}>*/}
+              {/*  <PageEditDish />*/}
+              {/*</Route>*/}
               <Redirect from="*" to={`/${PAGES.INITIAL}`} />
             </Switch>
         )}
