@@ -27,36 +27,7 @@ const Initial = ({
   return (
         <div className={classes.container}>
           {canSeeList && availableItems.map((item, index) => (
-              //<a href={`/${item}/dishes`} onClick={() => console.log("kjshfjhj")}>{item}</a>
-              // <a href={`/${item}/dishes`} onClick={() => (dispatch) => {
-              //
-              //   dispatch(requestDishes()); // Повідомляю стору, що роблю запит
-              //   return getDishes()
-              //       .then(response => {
-              //         if (response.ok){
-              //           console.log(response.json());
-              //           response.json()
-              //               .then(dishes => dispatch(receiveDishes(dishes)))
-              //               .catch(() => dispatch(errorReceiveDishes()));
-              //         }
-              //         else {
-              //           console.log('Error status ' + response.status)
-              //         }
-              //       })
-              // }}>{item}</a>
-            <Link
-              // href={index % 2 === 0
-              //   ? `https://www.google.com.ua/search?q=${item}&hl=ru`
-              //   : undefined}
-              // to={index % 2 !== 0
-              //   ? (location => ({
-              //     ...location,
-              //     pathname: `/${item}/dishes`,
-              //     search: `${location.search}&newProp=42`,
-              //   }))
-              //   : undefined}
-                href={`/${item}/dishes`}
-            >
+            <Link href={`/${item}/dishes`}>
               <Typography>
                 {item}
               </Typography>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {useHistory, useParams} from "react-router-dom";
 import Button from 'components/Button';
@@ -45,10 +45,8 @@ function EditDish(){
     const dishes = useSelector(({ dishes }) => dishes);
     const dispatch = useDispatch();
     const [state, setState] = useState(initialState);
-    //const dishNameRef = useRef('afafaf');
 
     useEffect(() => {
-        //console.log(state);
         if(current !== undefined){
             dispatch(fetchDishById({
                 dishId: current,
@@ -221,8 +219,6 @@ function EditDish(){
                     backgroundColor: "#27d827",
                 }} onClick={saveChanges}>Save</Button>
             </div>
-            {/*<button onClick={() => hist.goBack()}>Go Back</button>*/}
-            {/*<button onClick={() => hist.push(/shop/${next})}>Next product</button>*/}
         </div>
     );
 };

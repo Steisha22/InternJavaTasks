@@ -52,12 +52,6 @@ const App = () => {
               <Route path={'/cafe/dishes'}>
                 <PageDishes />
               </Route>
-              {/*<Route path={'/edit/:id'}>*/}
-              {/*  <PageEditDish />*/}
-              {/*</Route>*/}
-              {/*<Route path={'/edit'}>*/}
-              {/*  <PageEditDish />*/}
-              {/*</Route>*/}
               <Redirect from="*" to={`/${PAGES.INITIAL}`} />
             </Switch>
         )}

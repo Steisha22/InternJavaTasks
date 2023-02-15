@@ -11,23 +11,6 @@ const errorReceiveDishes = () => ({
     type: 'ERROR_RECEIVE_DISHES'
 });
 
-// const getExpressions = (expressionsCount) => new Promise((onSuccess) => {
-//     setTimeout(
-//         () => onSuccess(Array
-//         .from(new Array(expressionsCount).keys())
-//         .map(index => ({ name: ['2 + 2', '3 - 2', '25 / 5', '4 * 4']}))),
-//         2000
-//     );
-// });
-
-//Simulating backend
-// const getExpressions = (expressionsCount) => new Promise((onSuccess) => {
-//     setTimeout(
-//         () => onSuccess(Array(['2 + 2', '3 - 1', '25 ÷ 5', '4 * 4'])),
-//         2000
-//     );
-// });
-
 const getDishes = () => {
     console.log("In fetch")
     const url = `http://localhost:8080/cafe/dishes`;
@@ -38,43 +21,6 @@ const getDishes = () => {
         },
     };
     return fetch(url, options);
-    // return fetch(url, options).catch(() => {
-    //     const dishes = [
-    //         {
-    //             "id": 1,
-    //             "dish_name": "Dish №1",
-    //             "weight": 196,
-    //             "price": 8516.76,
-    //             "dish_category": "Category №2",
-    //             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    //         },
-    //         {
-    //             "id": 2,
-    //             "dish_name": "Dish №2",
-    //             "weight": 445,
-    //             "price": 4338.65,
-    //             "dish_category": "Category №1",
-    //             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    //         },
-    //         {
-    //             "id": 3,
-    //             "dish_name": "Dish №3",
-    //             "weight": 819,
-    //             "price": 8991.08,
-    //             "dish_category": "Category №1",
-    //             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    //         },
-    //         {
-    //             "id": 4,
-    //             "dish_name": "Dish №4",
-    //             "weight": 921,
-    //             "price": 5683.05,
-    //             "dish_category": "Category №3",
-    //             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    //         },
-    //     ]
-    //     return dishes;
-    // });
 };
 
 export const fetchDishes = () => (dispatch) => {
@@ -110,17 +56,6 @@ export const fetchDeleteDish = ({ dishId }) => (dispatch) => {
         .then(() => {
             dispatch(fetchDishes())
         })
-        // .then(response => {
-        //     if (response.ok){
-        //         console.log("Dish deleted")
-        //         // response.json()
-        //         //     .then(dishes => dispatch(receiveDishes(dishes)))
-        //         //     .catch(() => dispatch(errorReceiveDishes()));
-        //     }
-        //     else {
-        //         console.log('Error status ' + response.status)
-        //     }
-        // })
 };
 
 const getDishById = (dishId) => {
@@ -140,7 +75,6 @@ export const fetchDishById = ({ dishId }) => (dispatch) => {
     return getDishById(dishId)
         .then(response => {
             if (response.ok){
-                //console.log(response.json());
                 response.json()
                     .then(dishes => dispatch(receiveDishes(dishes)))
                     .catch(() => dispatch(errorReceiveDishes()));
@@ -171,7 +105,6 @@ const createDish = ({dish_name, weight, price, description, categoryId }) => {
 };
 
 export const fetchCreateDish = ({ dish_name, weight, price, description, categoryId }) => (dispatch) => {
-    //dispatch(requestDishes());
     return createDish({
         dish_name,
         weight,
@@ -182,9 +115,6 @@ export const fetchCreateDish = ({ dish_name, weight, price, description, categor
         .then(response => {
             if (response.ok){
                 console.log("Dish created");
-                // response.json()
-                //     .then(dishes => dispatch(receiveDishes(dishes)))
-                //     .catch(() => dispatch(errorReceiveDishes()));
             }
             else {
                 console.log('Error status ' + response.status)
@@ -212,7 +142,6 @@ const editDish = ({id, dish_name, weight, price, description, categoryId }) => {
 };
 
 export const fetchEditDish = ({ id, dish_name, weight, price, description, categoryId }) => (dispatch) => {
-    //dispatch(requestDishes());
     return editDish({
         id,
         dish_name,
@@ -221,15 +150,5 @@ export const fetchEditDish = ({ id, dish_name, weight, price, description, categ
         description,
         categoryId
     })
-        .then(response => {
-            if (response.ok){
-                console.log("Dish edited");
-                // response.json()
-                //     .then(dishes => dispatch(receiveDishes(dishes)))
-                //     .catch(() => dispatch(errorReceiveDishes()));
-            }
-            else {
-                console.log('Error status ' + response.status)
-            }
-        })
+        .then(dispatch(fetchDishes()));
 };
